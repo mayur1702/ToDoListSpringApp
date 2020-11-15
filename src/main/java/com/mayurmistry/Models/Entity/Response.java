@@ -1,9 +1,20 @@
 package com.mayurmistry.Models.Entity;
 
+import com.fasterxml.jackson.databind.util.JSONWrappedObject;
+
 public class Response {
     private boolean status;
     private String body;
     private int errorCode;
+    private JSONWrappedObject data;
+
+    public JSONWrappedObject getData() {
+        return data;
+    }
+
+    public void setData(JSONWrappedObject data) {
+        this.data = data;
+    }
 
     public int getErrorCode() {
         return errorCode;

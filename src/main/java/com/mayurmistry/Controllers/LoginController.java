@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class LoginController {
         try {
             boolean validUser = userLoginModel.authenticateUser(con);
             if(validUser) {
-                res.setHeader("ValidUser","1");
+                res.addCookie(new Cookie("token",user.getUsername()));
                 response.setStatus(true);
                 response.setBody("Login Successful");
             } else {
